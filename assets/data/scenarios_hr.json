@@ -1,9 +1,9 @@
 [
   {
     "id": "co_parenting",
-    "title": "Co-Parenting After Separation",
+    "title": "Suroditeljstvo nakon razdvajanja",
     "background": "courtroom.jpg",
-    "summary": "Navigate shared custody, communication, and boundaries after separation. Includes Croatian resources.",
+    "summary": "Snalaženje u zajedničkoj skrbi, komunikaciji i granicama nakon razdvajanja. Uključeni su hrvatski resursi.",
     "choices": [
       {
         "text": "Propose a structured parenting plan with weekly check-ins.",
@@ -30,9 +30,9 @@
   },
   {
     "id": "dating_after_breakup",
-    "title": "Dating After Breakup (With a Child)",
+    "title": "Upoznavanje nakon prekida (s djetetom)",
     "background": "park.jpg",
-    "summary": "Balance your needs, your child's feelings, and pacing introductions to a new partner.",
+    "summary": "Uskladite vlastite potrebe s osjećajima djeteta i tempom upoznavanja novog partnera.",
     "choices": [
       {
         "text": "Wait 3 months before introductions and discuss feelings weekly.",
@@ -59,9 +59,9 @@
   },
   {
     "id": "step_parenting",
-    "title": "Step-Parenting Dynamics",
+    "title": "Odnosi u pomiješanoj obitelji",
     "background": "living_room.jpg",
-    "summary": "Align parenting styles and avoid triangulation or favoritism.",
+    "summary": "Uskladite stilove odgoja i izbjegnite favoriziranje ili trokut komunikacije.",
     "choices": [
       {
         "text": "Create a shared family charter for rules & consequences.",
@@ -88,9 +88,9 @@
   },
   {
     "id": "mental_health",
-    "title": "Mental Health & Relationship Strain",
+    "title": "Mentalno zdravlje i napetost u vezi",
     "background": "bedroom.jpg",
-    "summary": "Support a partner with anxiety/depression/bipolar while maintaining boundaries.",
+    "summary": "Podržite partnera uz očuvanje granica.",
     "choices": [
       {
         "text": "Crisis plan + check-in signals.",
@@ -117,9 +117,9 @@
   },
   {
     "id": "long_distance",
-    "title": "Long-Distance Relationship",
+    "title": "Veza na daljinu",
     "background": "seaside.jpg",
-    "summary": "Build trust and rhythm across distance.",
+    "summary": "Izgradite povjerenje i ritam unatoč udaljenosti.",
     "choices": [
       {
         "text": "Set rituals: weekly video date + shared calendar.",
@@ -146,9 +146,9 @@
   },
   {
     "id": "cultural_religious",
-    "title": "Cultural & Religious Differences",
+    "title": "Kulturalne i vjerske razlike",
     "background": "kitchen.jpg",
-    "summary": "Navigate family expectations and holiday traditions.",
+    "summary": "Snalaženje u obiteljskim očekivanjima i blagdanskim tradicijama.",
     "choices": [
       {
         "text": "Alternate holidays + blended traditions.",
@@ -175,9 +175,9 @@
   },
   {
     "id": "financial_crisis",
-    "title": "Financial Crisis Together",
+    "title": "Financijska kriza zajedno",
     "background": "living_room.jpg",
-    "summary": "Face job loss or debt with transparency and plan.",
+    "summary": "Suočite se s gubitkom posla ili dugom uz transparentnost i plan.",
     "choices": [
       {
         "text": "Open the books; create a survival budget.",
@@ -204,9 +204,9 @@
   },
   {
     "id": "toxic_breakup_path",
-    "title": "Toxic Relationship & Break-Up Path",
+    "title": "Toksična veza i prekid",
     "background": "bedroom.jpg",
-    "summary": "Recognize repeated toxic patterns and decide your exit path with support.",
+    "summary": "Prepoznajte toksične obrasce i odaberite izlaz uz podršku.",
     "choices": [
       {
         "text": "Boundaries + individual therapy, reassess in 90 days.",
@@ -227,6 +227,122 @@
         "effect": {
           "trust": -6,
           "stress": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "infidelity_repair",
+    "title": "Oporavak nakon nevjere",
+    "background": "bedroom.jpg",
+    "summary": "Prođite kroz otkrivanje, granice i obnovu povjerenja nakon afere.",
+    "choices": [
+      {
+        "text": "Full disclosure with a structured repair plan and weekly check-ins.",
+        "effect": {
+          "trust": 5,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Transparency contracts: shared calendars and device boundaries for 90 days.",
+        "effect": {
+          "trust": 4,
+          "stress": -1
+        }
+      },
+      {
+        "text": "Avoid details and ‘move on’.",
+        "effect": {
+          "trust": -5,
+          "stress": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "substance_relapse",
+    "title": "Povratak ovisnosti u vezi",
+    "background": "living_room.jpg",
+    "summary": "Reagirajte sigurno na partnerov povratak ovisnosti uz granice i podršku.",
+    "choices": [
+      {
+        "text": "Relapse response plan (no-use home rule + crisis contacts).",
+        "effect": {
+          "trust": 3,
+          "stress": -4
+        }
+      },
+      {
+        "text": "Attend support group together; track triggers.",
+        "effect": {
+          "trust": 2,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Ignore it to avoid conflict.",
+        "effect": {
+          "trust": -4,
+          "stress": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "new_baby_stress",
+    "title": "Trudnoća i stres nakon dolaska bebe",
+    "background": "kitchen.jpg",
+    "summary": "Upravljajte nedostatkom sna, ulogama i promjenama intimnosti oko poroda ili posvojenja.",
+    "choices": [
+      {
+        "text": "Night-shift rota + protected alone time each week.",
+        "effect": {
+          "trust": 4,
+          "stress": -3
+        }
+      },
+      {
+        "text": "Divide tasks by who ‘notices first’.",
+        "effect": {
+          "trust": 1,
+          "stress": -1
+        }
+      },
+      {
+        "text": "One partner does nights by default.",
+        "effect": {
+          "trust": -3,
+          "stress": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "immigration_visa",
+    "title": "Imigracija i pritisak vize",
+    "background": "courtroom.jpg",
+    "summary": "Zajedno upravljajte papirologijom, rokovima i dugim čekanjima.",
+    "choices": [
+      {
+        "text": "Create a shared document tracker with weekly progress reviews.",
+        "effect": {
+          "trust": 3,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Ask a friend to be your admin buddy.",
+        "effect": {
+          "trust": 1,
+          "stress": -1
+        }
+      },
+      {
+        "text": "Avoid planning until news arrives.",
+        "effect": {
+          "trust": -2,
+          "stress": 2
         }
       }
     ]

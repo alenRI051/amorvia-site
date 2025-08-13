@@ -230,5 +230,121 @@
         }
       }
     ]
+  },
+  {
+    "id": "infidelity_repair",
+    "title": "Infidelity Recovery & Repair",
+    "background": "bedroom.jpg",
+    "summary": "Work through disclosure, boundaries, and rebuilding trust after an affair.",
+    "choices": [
+      {
+        "text": "Full disclosure with a structured repair plan and weekly check-ins.",
+        "effect": {
+          "trust": 5,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Transparency contracts: shared calendars and device boundaries for 90 days.",
+        "effect": {
+          "trust": 4,
+          "stress": -1
+        }
+      },
+      {
+        "text": "Avoid details and ‘move on’.",
+        "effect": {
+          "trust": -5,
+          "stress": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "substance_relapse",
+    "title": "Substance Use Relapse in the Relationship",
+    "background": "living_room.jpg",
+    "summary": "Respond safely to a partner's relapse while protecting boundaries and support.",
+    "choices": [
+      {
+        "text": "Relapse response plan (no-use home rule + crisis contacts).",
+        "effect": {
+          "trust": 3,
+          "stress": -4
+        }
+      },
+      {
+        "text": "Attend support group together; track triggers.",
+        "effect": {
+          "trust": 2,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Ignore it to avoid conflict.",
+        "effect": {
+          "trust": -4,
+          "stress": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "new_baby_stress",
+    "title": "Pregnancy & New Baby Stress",
+    "background": "kitchen.jpg",
+    "summary": "Handle sleep loss, roles, and intimacy changes around birth or adoption.",
+    "choices": [
+      {
+        "text": "Night-shift rota + protected alone time each week.",
+        "effect": {
+          "trust": 4,
+          "stress": -3
+        }
+      },
+      {
+        "text": "Divide tasks by who ‘notices first’.",
+        "effect": {
+          "trust": 1,
+          "stress": -1
+        }
+      },
+      {
+        "text": "One partner does nights by default.",
+        "effect": {
+          "trust": -3,
+          "stress": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "immigration_visa",
+    "title": "Immigration & Visa Pressure",
+    "background": "courtroom.jpg",
+    "summary": "Navigate paperwork stress, timelines, and long wait periods together.",
+    "choices": [
+      {
+        "text": "Create a shared document tracker with weekly progress reviews.",
+        "effect": {
+          "trust": 3,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Ask a friend to be your admin buddy.",
+        "effect": {
+          "trust": 1,
+          "stress": -1
+        }
+      },
+      {
+        "text": "Avoid planning until news arrives.",
+        "effect": {
+          "trust": -2,
+          "stress": 2
+        }
+      }
+    ]
   }
 ]
