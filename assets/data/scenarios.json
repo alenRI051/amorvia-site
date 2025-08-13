@@ -1,0 +1,234 @@
+[
+  {
+    "id": "co_parenting",
+    "title": "Co-Parenting After Separation",
+    "background": "courtroom.jpg",
+    "summary": "Navigate shared custody, communication, and boundaries after separation. Includes Croatian resources.",
+    "choices": [
+      {
+        "text": "Propose a structured parenting plan with weekly check-ins.",
+        "effect": {
+          "trust": 8,
+          "stress": -5
+        }
+      },
+      {
+        "text": "Communicate only through a co-parenting app to reduce conflict.",
+        "effect": {
+          "trust": 3,
+          "stress": -8
+        }
+      },
+      {
+        "text": "Go through lawyers immediately.",
+        "effect": {
+          "trust": -5,
+          "stress": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "dating_after_breakup",
+    "title": "Dating After Breakup (With a Child)",
+    "background": "park.jpg",
+    "summary": "Balance your needs, your child's feelings, and pacing introductions to a new partner.",
+    "choices": [
+      {
+        "text": "Wait 3 months before introductions and discuss feelings weekly.",
+        "effect": {
+          "trust": 6,
+          "stress": -3
+        }
+      },
+      {
+        "text": "Introduce casually at a neutral outing.",
+        "effect": {
+          "trust": 2,
+          "stress": 0
+        }
+      },
+      {
+        "text": "Introduce immediately at home.",
+        "effect": {
+          "trust": -6,
+          "stress": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "step_parenting",
+    "title": "Step-Parenting Dynamics",
+    "background": "living_room.jpg",
+    "summary": "Align parenting styles and avoid triangulation or favoritism.",
+    "choices": [
+      {
+        "text": "Create a shared family charter for rules & consequences.",
+        "effect": {
+          "trust": 7,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Each handles their own bio child.",
+        "effect": {
+          "trust": -2,
+          "stress": -1
+        }
+      },
+      {
+        "text": "Let things 'sort themselves out'.",
+        "effect": {
+          "trust": -5,
+          "stress": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "mental_health",
+    "title": "Mental Health & Relationship Strain",
+    "background": "bedroom.jpg",
+    "summary": "Support a partner with anxiety/depression/bipolar while maintaining boundaries.",
+    "choices": [
+      {
+        "text": "Crisis plan + check-in signals.",
+        "effect": {
+          "trust": 5,
+          "stress": -4
+        }
+      },
+      {
+        "text": "Ignore symptoms to avoid conflict.",
+        "effect": {
+          "trust": -4,
+          "stress": 5
+        }
+      },
+      {
+        "text": "Seek joint therapy.",
+        "effect": {
+          "trust": 6,
+          "stress": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "long_distance",
+    "title": "Long-Distance Relationship",
+    "background": "seaside.jpg",
+    "summary": "Build trust and rhythm across distance.",
+    "choices": [
+      {
+        "text": "Set rituals: weekly video date + shared calendar.",
+        "effect": {
+          "trust": 6,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Surprise visits only.",
+        "effect": {
+          "trust": -1,
+          "stress": 2
+        }
+      },
+      {
+        "text": "Open relationship discussion.",
+        "effect": {
+          "trust": -3,
+          "stress": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "cultural_religious",
+    "title": "Cultural & Religious Differences",
+    "background": "kitchen.jpg",
+    "summary": "Navigate family expectations and holiday traditions.",
+    "choices": [
+      {
+        "text": "Alternate holidays + blended traditions.",
+        "effect": {
+          "trust": 5,
+          "stress": -2
+        }
+      },
+      {
+        "text": "One partner's tradition only.",
+        "effect": {
+          "trust": -4,
+          "stress": 3
+        }
+      },
+      {
+        "text": "Avoid family gatherings.",
+        "effect": {
+          "trust": -2,
+          "stress": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "financial_crisis",
+    "title": "Financial Crisis Together",
+    "background": "living_room.jpg",
+    "summary": "Face job loss or debt with transparency and plan.",
+    "choices": [
+      {
+        "text": "Open the books; create a survival budget.",
+        "effect": {
+          "trust": 7,
+          "stress": -3
+        }
+      },
+      {
+        "text": "Hide debt to reduce worry.",
+        "effect": {
+          "trust": -6,
+          "stress": 5
+        }
+      },
+      {
+        "text": "Ask family for temporary help.",
+        "effect": {
+          "trust": 1,
+          "stress": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxic_breakup_path",
+    "title": "Toxic Relationship & Break-Up Path",
+    "background": "bedroom.jpg",
+    "summary": "Recognize repeated toxic patterns and decide your exit path with support.",
+    "choices": [
+      {
+        "text": "Boundaries + individual therapy, reassess in 90 days.",
+        "effect": {
+          "trust": 1,
+          "stress": -2
+        }
+      },
+      {
+        "text": "Immediate breakup with safety plan.",
+        "effect": {
+          "trust": 0,
+          "stress": -4
+        }
+      },
+      {
+        "text": "Stay and hope it improves.",
+        "effect": {
+          "trust": -6,
+          "stress": 6
+        }
+      }
+    ]
+  }
+]

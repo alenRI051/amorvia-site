@@ -1,0 +1,42 @@
+{
+  "en": {
+    "scenarios": "Scenarios",
+    "relationship_stats": "Relationship Stats",
+    "trust": "Trust",
+    "stress": "Stress",
+    "choose_path": "Choose your path",
+    "pwa_ready": "PWA Ready",
+    "beta": "BETA",
+    "crisis_hub": "Crisis Support Hub",
+    "country": "Country",
+    "resources": "Resources",
+    "close": "Close",
+    "bg_pack": "Background pack",
+    "bg_default": "Soft realistic",
+    "bg_dark": "Dark photo-like",
+    "lang": "Language",
+    "ready": "Ready",
+    "online_only": "online only",
+    "loading": "Loading…"
+  },
+  "hr": {
+    "scenarios": "Scenariji",
+    "relationship_stats": "Statistika odnosa",
+    "trust": "Povjerenje",
+    "stress": "Stres",
+    "choose_path": "Odaberite svoj put",
+    "pwa_ready": "PWA spremno",
+    "beta": "BETA",
+    "crisis_hub": "Centar za podršku",
+    "country": "Država",
+    "resources": "Resursi",
+    "close": "Zatvori",
+    "bg_pack": "Pozadine",
+    "bg_default": "Meki realizam",
+    "bg_dark": "Tamno, foto stil",
+    "lang": "Jezik",
+    "ready": "Spremno",
+    "online_only": "samo online",
+    "loading": "Učitavanje…"
+  }
+}

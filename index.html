@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="manifest" href="manifest.json"><link rel="icon" href="assets/characters/soul_male.png">
+<title>Amorvia — Beta</title><link rel="stylesheet" href="assets/css/styles.css"/></head>
+<body><div class="app"><div class="header">
+<div class="logo"><div class="crest"></div> Amorvia <span class="pill" id="betaLabel">BETA</span></div>
+<div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+<label class="pill"><span id="langLabel">Language</span>: <select id="langSel" style="background:transparent;border:none;color:inherit"><option value="en">EN</option><option value="hr">HR</option></select></label>
+<label class="pill"><span id="bgPackLabel">Background pack</span>: <select id="bgPack" style="background:transparent;border:none;color:inherit"><option value="default">Default</option><option value="dark">Dark</option></select></label>
+<button id="crisisBtn" class="pill" style="cursor:pointer;border:1px solid #334155;background:#0b1220">Crisis Support Hub</button>
+<div class="pill" id="pwaLabel">PWA Ready</div><div class="pill" id="readyPill">Loading…</div></div></div>
+<div id="crisisModal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);z-index:50">
+  <div class="card" style="width:min(720px,95vw);max-height:80vh;overflow:auto;background:#0e1116">
+    <div style="display:flex;align-items:center;gap:10px;justify-content:space-between">
+      <div style="font-weight:800" id="crisisTitle">Crisis Support Hub</div>
+      <button id="crisisClose" class="pill" style="cursor:pointer">Close</button>
+    </div>
+    <div style="margin-top:10px"><label class="pill"><span id="countryLabel">Country</span>: 
+      <select id="countrySel" style="background:transparent;border:none;color:inherit"><option value="Croatia">Croatia</option></select></label></div>
+    <div id="crisisList" style="margin-top:10px;display:grid;gap:8px"></div>
+  </div>
+</div>
+<div class="main"><aside class="sidebar" id="sidebar"></aside>
+<section class="scene"><div class="bg" id="bg"></div><div class="overlay"></div>
+<div class="characters"><img class="character" id="charA" src="assets/characters/soul_male.png"><img class="character" id="charB" src="assets/characters/soul_female.png"></div>
+<div class="content"><div class="hud"><div class="card" style="min-width:260px"><div id="title" style="font-size:20px;font-weight:800;margin-bottom:6px">Loading…</div><div id="summary" style="opacity:.85"></div></div>
+<div class="card" style="min-width:240px"><div style="font-weight:700;margin-bottom:6px">Relationship Stats</div>
+<div>Trust</div><div class="progress"><div id="trust" style="width:60%;background:#22c55e"></div></div>
+<div style="margin-top:6px">Stress</div><div class="progress"><div id="stress" style="width:40%;background:#ef4444"></div></div></div></div>
+<div class="card"><div style="font-weight:700;margin-bottom:8px">Choose your path</div><div id="choices" class="choices"></div></div>
+<div class="footer">© 2025 Amorvia (beta).</div></div></section></div></div>
+<script src="assets/js/app.js"></script></body></html>

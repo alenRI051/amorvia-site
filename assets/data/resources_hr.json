@@ -1,0 +1,17 @@
+{
+  "country": "Croatia",
+  "resources": [
+    {
+      "name": "Centar za socijalnu skrb (CZSS)",
+      "url": "https://socskrb.hr/"
+    },
+    {
+      "name": "Besplatna pravna pomoć",
+      "url": "https://pravosudje.gov.hr/"
+    },
+    {
+      "name": "Obiteljski sud - e-Građani",
+      "url": "https://gov.hr/"
+    }
+  ]
+}
