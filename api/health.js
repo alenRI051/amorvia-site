@@ -1,1 +1,1 @@
-export default function handler(req, res) { res.status(200).json({ ok: true, name: 'Amorvia', time: new Date().toISOString() }); }
+export default function handler(req, res) { res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() }); }
