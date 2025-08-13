@@ -1,29 +1,20 @@
-# Amorvia Playwright Test Pack
+# Amorvia Playwright Test Pack (Hardcoded + Logic Check)
 
-This pack gives you a quick **smoke + health** suite for the Amorvia beta.
+Runs against **https://www.amorvia.eu** by default and exercises basic gameplay.
 
 ## Files
-- `playwright.config.ts` — sets `BASE_URL` (defaults to `https://www.amorvia.eu`)
-- `tests/health.spec.ts` — checks `/api/health` returns `200` and `{ status: "ok" }`
-- `tests/ui-smoke.spec.ts` — loads the home page, finds entry points, ensures scenarios are discoverable, and clicks into one
-
-## Setup
-```bash
-# From your project root
-npm i -D @playwright/test
-npx playwright install
-```
+- `playwright.config.ts` — BASE_URL hardcoded to amorvia.eu
+- `tests/health.spec.ts` — checks `/api/health` returns 200 + `{status:"ok"}`
+- `tests/ui-logic.spec.ts` — opens a scenario, clicks **two choices**, and verifies that at least one **stat** changes (if stats are visible)
 
 ## Run
-```bash
-# If your domain is different, set BASE_URL
-export BASE_URL="https://www.amorvia.eu"   # PowerShell: $env:BASE_URL="https://www.amorvia.eu"
+```powershell
 npx playwright test
-```
-
-## View report
-```bash
 npx playwright show-report
 ```
 
-> Tip: Add data-testid attributes like `data-testid="scenario-card"` and `data-testid="node-text"` for more robust selectors.
+> Tip: Add stable selectors to your UI for bulletproof tests:
+> - `data-testid="scenario-card"` on scenario tiles
+> - `data-testid="node-text"` on dialogue/body
+> - `data-testid="stat-trust"` `data-testid="stat-stress"` etc.
+> - `data-testid="choice"` for each choice button
