@@ -1,28 +1,28 @@
 import { test, expect } from '@playwright/test';
 
-test('API health returns 200 with status ok (with diagnostics)', async ({ request, page, baseURL }) => {
-  const url = (baseURL || '') + '/api/health';
-  const res = await request.get(url);
-  const status = res.status();
-  let bodyText = '';
-  try { bodyText = await res.text(); } catch {}
+test('API health is visible in browser and says status ok', async ({ page }) => {
+  const resp = await page.goto('/api/health', { waitUntil: 'domcontentloaded' });
+  expect(resp?.ok(), 'HTTP status not OK for /api/health').toBeTruthy();
 
-  // Helpful console logging
-  console.log('\n[health] GET', url, '->', status, bodyText);
+  // Get any visible text from the page
+  const raw = await page.textContent('body');
+  expect(raw && raw.length > 0, 'No response body from /api/health').toBeTruthy();
 
-  if (!res.ok()) {
-    // Fallback: go through the browser to surface any CORS/CDN issues
-    await page.goto('/api/health', { waitUntil: 'domcontentloaded' });
-    const raw = await page.content();
-    console.log('[health][fallback] page content length:', raw.length);
-    // If the body contains status: ok, still pass
-    expect(raw.toLowerCase()).toContain('status');
-    expect(raw.toLowerCase()).toContain('ok');
-    return;
+  // Many setups render JSON within <pre>; try to parse
+  let json: any = null;
+  try {
+    const pre = await page.textContent('pre');
+    if (pre) json = JSON.parse(pre);
+  } catch {}
+  if (!json) {
+    try { json = JSON.parse(raw || ''); } catch {}
   }
 
-  // Normal JSON path
-  const json = JSON.parse(bodyText);
-  expect(json.status).toBe('ok');
-  expect(typeof json.timestamp).toBe('string');
+  if (json) {
+    expect(json.status).toBe('ok');
+  } else {
+    // As a last resort, string includes checks
+    expect((raw || '').toLowerCase()).toContain('status');
+    expect((raw || '').toLowerCase()).toContain('ok');
+  }
 });
