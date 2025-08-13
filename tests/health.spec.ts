@@ -1,38 +1,16 @@
-import { test, expect, request as pwRequest } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+import { findWorkingBase } from './common';
 
-const domains = [
-  'https://www.amorvia.eu',
-  'https://amorvia.eu'
-];
-
-async function checkHealth(url) {
+test('Health OK on at least one domain', async ({ page, request }) => {
+  const base = await findWorkingBase(page, request);
+  await page.goto(base + '/api/health', { waitUntil: 'domcontentloaded' });
+  const raw = (await page.textContent('body')) || '';
   try {
-    const res = await fetch(url);
-    if (!res.ok) return false;
-    try {
-      const json = await res.json();
-      return json.status === 'ok';
-    } catch {
-      const text = await res.text();
-      return text.toLowerCase().includes('status') && text.toLowerCase().includes('ok');
-    }
+    const pre = await page.textContent('pre');
+    const json = pre ? JSON.parse(pre) : JSON.parse(raw);
+    expect(json.status).toBe('ok');
   } catch {
-    return false;
+    expect(raw.toLowerCase()).toContain('status');
+    expect(raw.toLowerCase()).toContain('ok');
   }
-}
-
-test('Health passes on either www or apex domain', async () => {
-  let passed = false;
-  for (const domain of domains) {
-    const url = domain + '/api/health';
-    console.log('[health] Trying', url);
-    if (await checkHealth(url)) {
-      console.log('[health] OK at', url);
-      passed = true;
-      break;
-    } else {
-      console.log('[health] FAIL at', url);
-    }
-  }
-  expect(passed, 'No domain returned healthy status').toBeTruthy();
 });

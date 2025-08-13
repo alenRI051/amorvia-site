@@ -1,13 +1,19 @@
-# Amorvia API (Vercel-ready)
+# Amorvia Playwright Tests — Fixed
 
-Drop **api/** and **vercel.json** in your repo root and push to Vercel.
-- `/api/health` → 200 with `{ status: "ok", uptime, timestamp, version, region }`
-- `/api/echo`   → echoes request for quick checks
+This pack fixes the failure where the test expected a scenario card even when the page was already inside a scenario.
 
-## Verify after deploy
-https://<your-domain>/api/health
-https://<your-domain>/api/echo
+## What changed
+- `ui-logic.spec.ts` no longer asserts a scenario card exists. It opens one **if present**, otherwise proceeds straight to choices.
+- Choice selectors prefer `data-testid="choice"` but include fallbacks for the exact button texts seen on your page.
 
-## Notes
-- `vercel.json` excludes `/api/*` from SPA rewrites.
-- CORS set to `*` for quick testing (tighten later if needed).
+## Files
+- `tests/common.ts` (dual-domain probe)
+- `tests/health.spec.ts`
+- `tests/ui-logic.spec.ts` (fixed)
+- `playwright.config.ts`
+
+## Run
+```powershell
+npx playwright test
+npx playwright show-report
+```

@@ -1,5 +1,5 @@
 // tests/common.ts
-import { request, expect, Page, APIRequestContext } from '@playwright/test';
+import { request, Page, APIRequestContext } from '@playwright/test';
 
 export const CANDIDATES = ['https://www.amorvia.eu', 'https://amorvia.eu'];
 
@@ -10,18 +10,13 @@ export async function findWorkingBase(page: Page, requestCtx?: APIRequestContext
   for (const base of CANDIDATES) {
     try {
       const res = await ctx.get(base + '/api/health');
-      console.log('[probe][A]', base, res.status());
-      if (res.ok()) {
-        try { const j = await res.json(); if (j?.status === 'ok') return base; } catch {}
-      }
-    } catch (e) { /* ignore and try next */ }
-
+      if (res.ok()) { const j = await res.json().catch(() => ({} as any)); if (j?.status === 'ok') return base; }
+    } catch {}
     try {
       const r = await page.goto(base + '/api/health', { waitUntil: 'domcontentloaded' });
-      console.log('[probe][B]', base, r?.status());
       const txt = (await page.textContent('body')) || '';
-      if (txt.toLowerCase().includes('status') && txt.toLowerCase().includes('ok')) return base;
-    } catch (e) { /* ignore */ }
+      if (r?.ok() && txt.toLowerCase().includes('status') && txt.toLowerCase().includes('ok')) return base;
+    } catch {}
   }
   throw new Error('No working base URL found among: ' + CANDIDATES.join(', '));
 }
