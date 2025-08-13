@@ -1,16 +1,12 @@
-# Amorvia Playwright Tests — Fixed
+# Amorvia Playwright Tests v7 (snapshot-aligned)
 
-This pack fixes the failure where the test expected a scenario card even when the page was already inside a scenario.
+This set aligns selectors with your current UI:
 
-## What changed
-- `ui-logic.spec.ts` no longer asserts a scenario card exists. It opens one **if present**, otherwise proceeds straight to choices.
-- Choice selectors prefer `data-testid="choice"` but include fallbacks for the exact button texts seen on your page.
+- **ui-basic** checks `Amorvia BETA` and the two comboboxes (Language, Background pack).
+- **ui-smoke** considers scenarios "discoverable" if at least one of the known scenario titles is visible.
+- **ui-lenient** clicks any two visible buttons (excluding "Crisis Support Hub"), which matches your in-scenario choices.
 
-## Files
-- `tests/common.ts` (dual-domain probe)
-- `tests/health.spec.ts`
-- `tests/ui-logic.spec.ts` (fixed)
-- `playwright.config.ts`
+All tests automatically try both `https://www.amorvia.eu` and `https://amorvia.eu`.
 
 ## Run
 ```powershell

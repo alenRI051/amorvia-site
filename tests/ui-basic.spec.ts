@@ -1,17 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { findBase } from './common';
 
-test('Home loads and shows some content', async ({ page }) => {
-  const resp = await page.goto('/', { waitUntil: 'domcontentloaded' });
-  expect(resp?.ok(), 'Home responded with a non-OK status').toBeTruthy();
-
-  // Look for any meaningful text or element on the page
-  const bodyText = (await page.textContent('body')) || '';
-  expect(bodyText.length).toBeGreaterThan(20);
-
-  // If crisis support button exists, open/close it
-  const crisisBtn = page.getByRole('button', { name: /crisis support|help|support/i }).first();
-  if (await crisisBtn.isVisible().catch(() => false)) {
-    await crisisBtn.click();
-    await page.waitForTimeout(300);
-  }
+test('Home loads and shows some content', async ({ page, request }) => {
+  const base = await findBase(page, request);
+  await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
+  // Assert stable page marker
+  await expect(page.getByText(/Amorvia\s+BETA/i)).toBeVisible();
+  // Also ensure language and background controls exist
+  await expect(page.getByLabel(/Language:/i)).toBeVisible();
+  await expect(page.getByLabel(/Background pack:/i)).toBeVisible();
 });
