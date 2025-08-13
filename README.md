@@ -1,20 +1,13 @@
-# Amorvia Playwright Test Pack (Hardcoded + Logic Check)
+# Amorvia API (Vercel-ready)
 
-Runs against **https://www.amorvia.eu** by default and exercises basic gameplay.
+Drop **api/** and **vercel.json** in your repo root and push to Vercel.
+- `/api/health` → 200 with `{ status: "ok", uptime, timestamp, version, region }`
+- `/api/echo`   → echoes request for quick checks
 
-## Files
-- `playwright.config.ts` — BASE_URL hardcoded to amorvia.eu
-- `tests/health.spec.ts` — checks `/api/health` returns 200 + `{status:"ok"}`
-- `tests/ui-logic.spec.ts` — opens a scenario, clicks **two choices**, and verifies that at least one **stat** changes (if stats are visible)
+## Verify after deploy
+https://<your-domain>/api/health
+https://<your-domain>/api/echo
 
-## Run
-```powershell
-npx playwright test
-npx playwright show-report
-```
-
-> Tip: Add stable selectors to your UI for bulletproof tests:
-> - `data-testid="scenario-card"` on scenario tiles
-> - `data-testid="node-text"` on dialogue/body
-> - `data-testid="stat-trust"` `data-testid="stat-stress"` etc.
-> - `data-testid="choice"` for each choice button
+## Notes
+- `vercel.json` excludes `/api/*` from SPA rewrites.
+- CORS set to `*` for quick testing (tighten later if needed).

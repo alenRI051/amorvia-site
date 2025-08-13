@@ -1,7 +1,14 @@
-export default function handler(req, res) {
-  res.status(200).json({
+// api/health.js
+// Vercel Serverless Function — CommonJS
+module.exports = async (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  const body = {
     status: 'ok',
-    message: 'Amorvia API is running',
-    timestamp: new Date().toISOString()
-  });
-}
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+    version: process.env.NEXT_PUBLIC_VERSION || 'beta',
+    region: process.env.VERCEL_REGION || null
+  };
+  res.status(200).json(body);
+};
