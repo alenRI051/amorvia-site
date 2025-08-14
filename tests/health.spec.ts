@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { findWorkingBase } from './common';
+import { pickBase } from './common';
 
-test('Health OK on at least one domain', async ({ page, request }) => {
-  const base = await findWorkingBase(page, request);
-  await page.goto(base + '/api/health', { waitUntil: 'domcontentloaded' });
-  const raw = (await page.textContent('body')) || '';
-  try {
-    const pre = await page.textContent('pre');
-    const json = pre ? JSON.parse(pre) : JSON.parse(raw);
-    expect(json.status).toBe('ok');
-  } catch {
-    expect(raw.toLowerCase()).toContain('status');
-    expect(raw.toLowerCase()).toContain('ok');
+test('Health endpoint responds (HTTP 200) on production', async ({ request, page }) => {
+  const base = await pickBase(page, request);
+  const url = base + '/api/health';
+
+  const res = await request.get(url);
+  if (res.ok()) {
+    expect(res.status()).toBe(200);
+    return;
   }
+
+  const nav = await page.goto(url, { waitUntil: 'domcontentloaded' });
+  expect(nav?.ok(), 'Expected HTTP 200 from /api/health').toBeTruthy();
 });

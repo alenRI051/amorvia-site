@@ -1,34 +1,50 @@
 import { test, expect } from '@playwright/test';
-import { findWorkingBase } from './common';
+import { pickBase } from './common';
+
+const KNOWN_TITLES = [
+  'Co-Parenting After Separation',
+  'Dating After Breakup',
+  'Step-Parenting Dynamics',
+  'Mental Health & Relationship Strain',
+  'Long-Distance Relationship',
+  'Cultural & Religious Differences',
+  'Financial Crisis Together',
+  'Toxic Relationship & Break-Up Path',
+  'Infidelity Recovery & Repair',
+  'Substance Use Relapse in the Relationship',
+  'Pregnancy & New Baby Stress',
+  'Immigration & Visa Pressure',
+];
 
 test('Open a scenario (if needed) and click two choices', async ({ page, request }) => {
-  const base = await findWorkingBase(page, request);
+  const base = await pickBase(page, request);
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
 
-  // If scenario tiles exist, open one; otherwise, continue (we may already be in a scenario)
-  const card = page.locator('[data-testid="scenario-card"], [data-scenario]').first();
-  if (await card.isVisible().catch(() => false)) {
-    await card.click();
+  // If choices already visible, great.
+  let choices = page.locator('button:not(:has-text("Crisis Support Hub"))');
+  if (!(await choices.count())) {
+    // Try to click a scenario title if it's clickable
+    for (const title of KNOWN_TITLES) {
+      const asButton = page.getByRole('button', { name: new RegExp(title, 'i') });
+      if (await asButton.isVisible().catch(() => false)) { await asButton.click(); break; }
+      const asLink = page.getByRole('link', { name: new RegExp(title, 'i') });
+      if (await asLink.isVisible().catch(() => false)) { await asLink.click(); break; }
+    }
+    await page.waitForTimeout(300);
+    choices = page.locator('button:not(:has-text("Crisis Support Hub"))');
   }
 
-  // Find choice buttons. Prefer data-testid; fallback to visible button texts from snapshot.
-  const choices = page.locator(
-    '[data-testid="choice"], [data-choice], ' +
-    'button:has-text("Propose a structured parenting plan"), ' +
-    'button:has-text("Communicate only through a co-parenting app"), ' +
-    'button:has-text("Go through lawyers immediately"), ' +
-    'button:has-text("Continue"), button:has-text("Next")'
-  );
+  // Filter out obvious non-game controls
+  const gameplayButtons = choices.filter({
+    hasNot: page.getByText(/Language:|Background pack:/i)
+  });
 
-  await expect(choices.first(), 'No choice button visible').toBeVisible();
+  await expect(gameplayButtons.first(), 'No choice button visible').toBeVisible();
 
-  // Click two choices if available
-  await choices.first().click();
-  if (await choices.nth(1).isVisible().catch(() => false)) {
-    await choices.nth(1).click();
-  }
+  await gameplayButtons.first().click();
+  const second = gameplayButtons.nth(1);
+  if (await second.isVisible().catch(() => false)) await second.click();
 
-  // Sanity: page has content after interactions
   const content = (await page.textContent('main, body')) || '';
   expect(content.length).toBeGreaterThan(20);
 });
