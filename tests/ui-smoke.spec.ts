@@ -20,7 +20,6 @@ test('Home renders and scenarios are discoverable', async ({ page, request }) =>
   const base = await findBase(page, request);
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
 
-  // Verify at least one known scenario title is visible
-  const any = page.getByText(new RegExp(SCENARIO_TITLES.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i')).first();
-  await expect(any, 'Expected at least one scenario title to be visible').toBeVisible();
+  const pattern = new RegExp(SCENARIO_TITLES.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
+  await expect(page.getByText(pattern).first(), 'Expected at least one scenario title').toBeVisible();
 });

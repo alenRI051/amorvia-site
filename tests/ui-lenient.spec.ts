@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { pickBase } from './common';
+import { findBase } from './common';
 
 test('Click two visible gameplay actions', async ({ page, request }) => {
-  const base = await pickBase(page, request);
+  const base = await findBase(page, request);
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
 
-  // Exclude known non-game controls
+  // Exclude non-game controls and generic Close buttons
   const buttons = page.locator('button').filter({
-    hasNot: page.getByText(/Crisis Support Hub|Language:|Background pack:/i)
+    hasNot: page.getByText(/Crisis Support Hub|Language:|Background pack:|Close/i)
   });
 
   await expect(buttons.first(), 'No gameplay-like button found').toBeVisible();

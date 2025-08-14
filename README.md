@@ -1,9 +1,10 @@
-# Amorvia Playwright Tests v8 (production-aligned)
+# Amorvia Playwright Tests v9 (helper + selectors fixed)
 
-**Changes made to pass with your current UI/API:**
-- `health.spec.ts`: probes production domain and passes on **HTTP 200** (no JSON parsing).
-- `ui-logic.spec.ts`: proceeds directly to **choice buttons** if present; otherwise attempts to click a known **scenario title** if it is clickable; then clicks two choices.
-- `ui-lenient.spec.ts`: clicks any two visible **gameplay buttons** (filters out Crisis Support + Language/Background controls).
+- **common.ts** exports `findBase` (named) and all specs import it consistently.
+- **Selectors** match your live UI:
+  - Choice buttons: use the three visible labels, fallback to buttons under "Choose your path".
+  - Basic smoke checks look for "Amorvia BETA" and the two comboboxes.
+  - Lenient test clicks two visible buttons, excluding Crisis Support / Language / Background / Close.
 
 ## Run
 ```powershell
