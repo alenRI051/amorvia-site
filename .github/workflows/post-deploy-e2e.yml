@@ -1,0 +1,44 @@
+name: Post-Deploy E2E
+
+on:
+  deployment_status:
+
+jobs:
+  e2e-on-deploy:
+    name: e2e on deploy
+    if: >
+      github.event.deployment_status.state == 'success' &&
+      (github.event.deployment.environment == 'Production' || github.event.deployment.environment == 'production')
+    runs-on: ubuntu-latest
+    env:
+      # Prefer the deployment_status target_url, fallback to deployment.url
+      BASE_URL: ${{ github.event.deployment_status.target_url || github.event.deployment_status.environment_url || github.event.deployment_status.log_url || github.event.deployment_status.target_url }}
+    steps:
+      - name: Echo target URL
+        run: |
+          echo "Deployment URL: $BASE_URL"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps & Playwright
+        run: |
+          npm ci || npm i -D @playwright/test
+          npx playwright install --with-deps
+
+      - name: Run Playwright tests against deployed URL
+        run: |
+          echo "Testing BASE_URL=$BASE_URL"
+          npx playwright test
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-post-deploy
+          path: playwright-report
