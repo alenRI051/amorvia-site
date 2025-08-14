@@ -1,13 +1,25 @@
-# Amorvia Playwright Tests v9 (helper + selectors fixed)
+# Amorvia CI + Tests bundle
 
-- **common.ts** exports `findBase` (named) and all specs import it consistently.
-- **Selectors** match your live UI:
-  - Choice buttons: use the three visible labels, fallback to buttons under "Choose your path".
-  - Basic smoke checks look for "Amorvia BETA" and the two comboboxes.
-  - Lenient test clicks two visible buttons, excluding Crisis Support / Language / Background / Close.
+This zip contains:
+- Passing Playwright tests (`tests/`) with consistent helper export `findBase`
+- GitHub Actions workflow `.github/workflows/playwright.yml` to run tests on every push/PR
+- Sample React components in `samples/` showing how to add stable `data-testid` selectors
 
-## Run
-```powershell
+## Install & run locally
+```bash
+npm i -D @playwright/test
+npx playwright install
 npx playwright test
 npx playwright show-report
 ```
+
+## CI
+Push `.github/workflows/playwright.yml` to enable Playwright in GitHub Actions.
+Artifacts include the HTML report.
+
+## Adding stable selectors
+Use test ids like:
+- `data-testid="scenario-card"` on each scenario tile
+- `data-testid="choice"` on gameplay choice buttons
+
+Update the app to use the `samples/ScenarioCard.tsx` and `samples/ChoiceButton.tsx` patterns.

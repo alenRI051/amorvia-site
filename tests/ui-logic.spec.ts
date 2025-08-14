@@ -17,7 +17,6 @@ test('Open a scenario (if needed) and click two choices', async ({ page, request
     // Try clicking the first scenario title if it's a link/button
     const firstTitle = page.getByText(/Co-Parenting After Separation/i).first();
     if (await firstTitle.isVisible().catch(() => false)) {
-      // If it's wrapped in a button or link, click that; else do nothing.
       const btn = page.getByRole('button', { name: /Co-Parenting After Separation/i }).first();
       const link = page.getByRole('link', { name: /Co-Parenting After Separation/i }).first();
       if (await btn.isVisible().catch(() => false)) await btn.click();
@@ -30,7 +29,7 @@ test('Open a scenario (if needed) and click two choices', async ({ page, request
 
   // As a fallback, look for any buttons within a section that mentions "Choose your path"
   if (!(await choice.count())) {
-    const section = page.locator(':text("Choose your path")').locator('..'); // parent
+    const section = page.locator(':text("Choose your path")').locator('..');
     const inSection = section.locator('button');
     if (await inSection.count()) choice = inSection;
   }

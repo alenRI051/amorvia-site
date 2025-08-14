@@ -5,7 +5,6 @@ test('Click two visible gameplay actions', async ({ page, request }) => {
   const base = await findBase(page, request);
   await page.goto(base + '/', { waitUntil: 'domcontentloaded' });
 
-  // Exclude non-game controls and generic Close buttons
   const buttons = page.locator('button').filter({
     hasNot: page.getByText(/Crisis Support Hub|Language:|Background pack:|Close/i)
   });
