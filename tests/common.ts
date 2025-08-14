@@ -1,7 +1,9 @@
 // tests/common.ts
 import { request, APIRequestContext, Page } from '@playwright/test';
 
-export const DOMAINS = ['https://www.amorvia.eu', 'https://amorvia.eu'];
+// If BASE_URL is provided (e.g., from post-deploy workflow), use it directly.
+const OVERRIDE = process.env.BASE_URL && process.env.BASE_URL.trim();
+export const DOMAINS = OVERRIDE ? [OVERRIDE] : ['https://www.amorvia.eu', 'https://amorvia.eu'];
 
 /** Return the first base URL that responds OK for '/'. */
 export async function findBase(page: Page, ctx?: APIRequestContext): Promise<string> {
