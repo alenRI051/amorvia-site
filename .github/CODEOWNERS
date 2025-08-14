@@ -1,4 +1,4 @@
 # CODEOWNERS file for Amorvia
-# All files in the repo require review from @alenRI051
+# All files in the repo require review from @alenRI051 and @nova-ai
 
-*   @alenRI051
+*   @alenRI051 @nova-ai
