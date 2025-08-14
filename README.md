@@ -1,11 +1,11 @@
-# Amorvia CI + Tests bundle
+# Amorvia — Tests + CI Bundle
 
-This zip contains:
-- Passing Playwright tests (`tests/`) with consistent helper export `findBase`
-- GitHub Actions workflow `.github/workflows/playwright.yml` to run tests on every push/PR
-- Sample React components in `samples/` showing how to add stable `data-testid` selectors
+This bundle contains:
+- `tests/` — Playwright tests aligned with the current UI
+- `.github/workflows/playwright.yml` — GitHub Actions to run tests on every push/PR to `main`
+- `playwright.config.ts` — config with trace on failure
 
-## Install & run locally
+## Local run
 ```bash
 npm i -D @playwright/test
 npx playwright install
@@ -14,12 +14,9 @@ npx playwright show-report
 ```
 
 ## CI
-Push `.github/workflows/playwright.yml` to enable Playwright in GitHub Actions.
-Artifacts include the HTML report.
+Push `.github/workflows/playwright.yml`. After one run, add a Ruleset for `main` and require the `e2e` check to pass before merging.
 
-## Adding stable selectors
-Use test ids like:
-- `data-testid="scenario-card"` on each scenario tile
-- `data-testid="choice"` on gameplay choice buttons
-
-Update the app to use the `samples/ScenarioCard.tsx` and `samples/ChoiceButton.tsx` patterns.
+## Tip: Stabilize selectors
+In your app, add:
+- `data-testid="scenario-card"` on scenario tiles
+- `data-testid="choice"` on choice buttons
