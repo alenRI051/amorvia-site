@@ -3,16 +3,40 @@ name: e2e
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ multi-act-prep ]  # so "e2e / test (push)" runs too
 
 jobs:
   e2e:
     name: e2e
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Always succeed
+      - uses: actions/checkout@v4
+      - name: Structure sanity checks
         run: |
-          echo "✅ Pretend e2e test passed."
-          exit 0
+          test -f index.html
+          test -f vercel.json
+          test -f api/health/index.js
+          test -f data/scenarios.json
+          echo "✅ e2e sanity OK"
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Quick HTML validations that won't break with UI tweaks
+      - name: Validate index.html basics
+        run: |
+          grep -qi "<title>Amorvia" index.html
+          grep -qi 'meta name="description"' index.html
+          grep -qi 'link rel="canonical"' index.html
+          echo "✅ index.html looks good"
+
+      - name: Validate scenarios format (multi-act)
+        run: |
+          node -e "const fs=require('fs');const j=JSON.parse(fs.readFileSync('data/scenarios.json','utf8'));if(!Array.isArray(j.scenarios))process.exit(1);const ok=j.scenarios.every(s=>Array.isArray(s.acts)&&s.acts.length>0&&Array.isArray(s.acts[0].steps));if(!ok)process.exit(2);console.log('✅ scenarios.json multi-act OK')"
+
+      - name: Done
+        run: echo "✅ test job complete"
