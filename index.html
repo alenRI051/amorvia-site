@@ -1,27 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content="Amorvia — An interactive relationship journey game where your choices shape the path. Navigate love, conflict, and growth in an engaging, educational experience.">
   <link rel="canonical" href="https://www.amorvia.eu/">
-  <title>Amorvia — Relationship Journey Game</title>
-
-  <!-- Preload main background and font -->
-  <link rel="preload" as="image" href="/assets/backgrounds/main-bg.jpg">
-  <link rel="preload" as="font" href="/assets/fonts/main-font.woff2" type="font/woff2" crossorigin>
-
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Amorvia — Multi‑Act Prep</title>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="icon" href="/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <meta name="theme-color" content="#0f172a"/>
+  <link rel="preload" as="image" href="/assets/backgrounds/room.svg">
 </head>
 <body>
-  <header>
-    <h1>Amorvia</h1>
-  </header>
-  <main>
-    <button aria-label="Start Game">Start</button>
-    <select aria-label="Choose a scenario">
-      <option>Scenario 1</option>
-    </select>
-  </main>
+  <div class="app">
+    <header class="header">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Amorvia — Multi‑Act Prep <span style="opacity:.6;font-weight:500;">(<span id="version">loading…</span>)</span></h1>
+    </header>
+    <main class="main">
+      <aside class="card sidebar">
+        <input id="search" class="search" placeholder="Search scenarios…" aria-label="Search scenarios"/>
+        <div class="list" aria-label="Scenario list"></div>
+      </aside>
+      <section class="card stage">
+        <div class="stage-toolbar">
+          <button class="button" type="button" aria-label="Reload scene" onclick="location.reload()">Reload</button>
+
+          <label for="bgSelect">Background:</label>
+          <select id="bgSelect" class="select" aria-label="Choose background">
+            <option value="assets/backgrounds/room.svg">Room (realistic placeholder)</option>
+          </select>
+
+          <label for="leftSelect">Left character:</label>
+          <select id="leftSelect" class="select" aria-label="Choose left character">
+            <option value="assets/characters/male_casual.svg">Male • Casual</option>
+          </select>
+
+          <label for="rightSelect">Right character:</label>
+          <select id="rightSelect" class="select" aria-label="Choose right character">
+            <option value="assets/characters/female_casual.svg">Female • Casual</option>
+          </select>
+
+          <div style="margin-left:auto;font-weight:600" id="sceneTitle" aria-live="polite">Choose a scenario…</div>
+        </div>
+
+        <div class="stage-canvas">
+          <div class="bg" role="img" aria-label="Background"></div>
+          <div class="character left" id="left"><img alt="Left Character"/></div>
+          <div class="character right" id="right"><img alt="Right Character"/></div>
+        </div>
+
+        <div class="panel" aria-label="Act and dialogue panel">
+          <div class="row">
+            <span id="actBadge" class="badge">Act —</span>
+            <strong id="actTitle">—</strong>
+          </div>
+          <div id="dialog" style="margin:6px 0 10px" aria-live="polite">Pick a scenario to begin.</div>
+          <div class="row">
+            <button id="prevBtn" class="button" type="button" aria-label="Previous">Prev</button>
+            <button id="nextBtn" class="button" type="button" aria-label="Next">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">/api/health should return JSON 200 OK when deployed on Vercel.</footer>
+  </div>
+  <script src="/js/app.js"></script>
 </body>
 </html>
