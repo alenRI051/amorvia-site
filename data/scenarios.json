@@ -1,0 +1,86 @@
+{
+  "version": "multi-act-prep-2025-08-15",
+  "scenarios": [
+    {
+      "id": "co_parenting",
+      "title": "Co‑Parenting After Breakup",
+      "acts": [
+        {
+          "id": "act1",
+          "title": "The First Handover",
+          "steps": [
+            "You’re preparing your child’s bag. Your ex texts: “Running late, 15 min.”",
+            "Do you wait calmly and note it, or reply with a frustrated message?",
+            "You take a breath and choose a neutral tone. The handover completes without drama."
+          ]
+        },
+        {
+          "id": "act2",
+          "title": "Scheduling & Boundaries",
+          "steps": [
+            "A public holiday is coming up. Both of you want the day.",
+            "You propose a rotate‑each‑year rule and document it in the shared calendar.",
+            "Tension lowers as expectations become predictable."
+          ]
+        },
+        {
+          "id": "act3",
+          "title": "Medical Decisions",
+          "steps": [
+            "Your child needs a dentist appointment. Times clash with ex’s work.",
+            "You offer two alternatives and send the clinic’s contact details.",
+            "The appointment is confirmed without blame or sarcasm."
+          ]
+        },
+        {
+          "id": "act4",
+          "title": "New Partners",
+          "steps": [
+            "Your ex mentions introducing a new partner to the child.",
+            "You ask for a gradual approach: short, neutral meetings in public spaces first.",
+            "Agreement reached: both will follow the same rule for new partners."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dating_after_breakup_with_child",
+      "title": "Dating After Breakup (With a Child)",
+      "acts": [
+        {
+          "id": "act1",
+          "title": "Readiness Check",
+          "steps": [
+            "Are you emotionally ready? List three signs you are, and three you’re not."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed_family_conflict",
+      "title": "Blended Family Boundaries",
+      "acts": [
+        {
+          "id": "act1",
+          "title": "House Rules",
+          "steps": [
+            "You and your partner set clear, consistent rules for all kids."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mental_health_support",
+      "title": "Partner Mental Health Support (Bipolar)",
+      "acts": [
+        {
+          "id": "act1",
+          "title": "Crisis Plan",
+          "steps": [
+            "You agree on early‑warning signals and a plan for de‑escalation."
+          ]
+        }
+      ]
+    }
+  ]
+}
