@@ -1,0 +1,31 @@
+:root { --bg:#0f172a; --card:#fff; --ink:#0b1220; }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#e5e7eb}
+.app{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh}
+.header{display:flex;gap:12px;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);position:sticky;top:0}
+.logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#ef4444,#8b5cf6);box-shadow:0 6px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.24)}
+h1{font-size:18px;margin:0;letter-spacing:.3px}
+.main{display:grid;grid-template-columns:320px 1fr;gap:16px;padding:16px}
+@media(max-width:940px){.main{grid-template-columns:1fr}}
+.card{background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.18);overflow:hidden}
+.sidebar{padding:12px}
+.search{width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;outline:none}
+.list{margin-top:10px;display:grid;gap:8px;max-height:65vh;overflow:auto}
+.item{padding:10px 12px;border:1px solid #eef2f7;border-radius:12px;cursor:pointer;display:grid;gap:4px;background:#fbfdff}
+.item:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.stage{display:grid;grid-template-rows:auto 1fr auto;height:calc(100vh - 120px)}
+.stage-toolbar{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f6f7fb;border-bottom:1px solid #eef2f7;color:#0b1220}
+.stage-canvas{position:relative;overflow:hidden;background:#0b1220}
+.bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat}
+.character{position:absolute;bottom:0;width:clamp(120px,22vw,320px);transition:transform .2s ease,filter .2s ease}
+.character.left{left:6%}.character.right{right:6%}
+.character img{width:100%;height:auto;display:block}
+.footer{padding:12px 18px;font-size:12px;color:#cbd5e1;opacity:.9}
+.badge{padding:6px 10px;border-radius:999px;font-size:12px;background:#e8fff1;color:#175c36;border:1px solid #bce9cd}
+.panel{padding:10px 12px;border-top:1px solid #eef2f7;background:#fff}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.button{padding:8px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
+.select{padding:8px 10px;border-radius:10px;border:1px solid #e5e7eb;background:#fff}
+#dialog{min-height:88px;line-height:1.4}
+#actBadge{font-weight:600}
