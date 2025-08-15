@@ -1,0 +1,45 @@
+{
+  "version": "beta-patch-2025-08-15",
+  "scenarios": [
+    {
+      "id": "co_parenting",
+      "title": "Co‑Parenting After Breakup",
+      "status": "ready"
+    },
+    {
+      "id": "dating_after_breakup_with_child",
+      "title": "Dating After Breakup (With a Child)",
+      "status": "outline"
+    },
+    {
+      "id": "mixed_family_conflict",
+      "title": "Blended Family Boundaries",
+      "status": "ready"
+    },
+    {
+      "id": "budget_pressure",
+      "title": "Money Stress & Budget",
+      "status": "ready"
+    },
+    {
+      "id": "communication_styles",
+      "title": "Communication Styles Clash",
+      "status": "ready"
+    },
+    {
+      "id": "lgbtq_new_parenting",
+      "title": "LGBTQ+ New Parenting",
+      "status": "outline"
+    },
+    {
+      "id": "mental_health_support",
+      "title": "Partner Mental Health Support (Bipolar)",
+      "status": "ready"
+    },
+    {
+      "id": "holiday_plans",
+      "title": "Holiday Plans With Extended Family",
+      "status": "ready"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Amorvia — Beta Patch</title>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="icon" href="/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <meta name="theme-color" content="#0f172a"/>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Amorvia — Beta Patch <span style="opacity:.6;font-weight:500;">(<span id="version">loading…</span>)</span></h1>
+    </header>
+    <main class="main">
+      <aside class="card sidebar">
+        <input id="search" class="search" placeholder="Search scenarios…"/>
+        <div class="list" aria-label="Scenario list"></div>
+      </aside>
+      <section class="card stage">
+        <div class="stage-toolbar">
+          <div class="button" onclick="location.reload()">Reload</div>
+          <label>Background:
+            <select id="bgSelect" class="select">
+              <option value="assets/backgrounds/room.svg">Room (realistic placeholder)</option>
+            </select>
+          </label>
+          <label>Left:
+            <select id="leftSelect" class="select">
+              <option value="assets/characters/male_casual.svg">Male • Casual</option>
+              <option value="assets/characters/spirit_calm.svg">Spirit • Calm</option>
+            </select>
+          </label>
+          <label>Right:
+            <select id="rightSelect" class="select">
+              <option value="assets/characters/female_casual.svg">Female • Casual</option>
+              <option value="assets/characters/spirit_angry.svg">Spirit • Angry</option>
+            </select>
+          </label>
+          <div style="margin-left:auto;font-weight:600" id="sceneTitle">Choose a scenario…</div>
+        </div>
+        <div class="stage-canvas">
+          <div class="bg" role="img" aria-label="Background"></div>
+          <div class="character left" id="left"><img alt="Left Character"/></div>
+          <div class="character right" id="right"><img alt="Right Character"/></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      /api/health should return JSON 200 OK when deployed on Vercel.
+    </footer>
+  </div>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(()=>{});
+    }
+  </script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
